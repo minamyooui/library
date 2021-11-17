@@ -20,7 +20,7 @@ function toggleRead() {
   displayBooks();
 }
 
-for (let i = 0; i < 2; i++) {
+for (let i = 0; i < 100; i++) {
   const book = new Book('nyuaa', 'nyaa', 678, 'Yes');
   library.push(book);
 }
