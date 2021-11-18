@@ -20,10 +20,12 @@ function toggleRead() {
   displayBooks();
 }
 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 3; i++) {
   const book = new Book('nyuaa', 'nyaa', 678, 'Yes');
   library.push(book);
 }
+
+checkStorage();
 displayBooks();
 
 function addBookToLibrary(title, author, pages, read) {
@@ -92,6 +94,7 @@ function createNewBook() {
   addBookToLibrary(title, author, pages, read);
   displayBooks();
   resetForm();
+  storeLibrary();
 }
 
 function checkPages(pages) {
@@ -120,4 +123,16 @@ function resetForm() {
 function closeForm() {
   const form = document.querySelector('.form');
   form.classList.toggle('hideform');
+}
+
+function storeLibrary() {
+  localStorage.setItem('libraryArr', JSON.stringify(library));
+}
+
+function checkStorage() {
+  if(localStorage.getItem('libraryArr')) {
+    let libraryJSON = localStorage.getItem('libraryArr');
+    library = JSON.parse(JSON.parse(JSON.stringify(libraryJSON)));
+    displayBooks();
+  }
 }
